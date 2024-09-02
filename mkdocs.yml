@@ -76,6 +76,8 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.caret
   - pymdownx.mark
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
   - attr_list
   - md_in_html
   - tables
