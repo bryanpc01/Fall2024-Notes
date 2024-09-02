@@ -73,8 +73,11 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.tilde
+  - pymdownx.caret
   - attr_list
   - md_in_html
+  - tables
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.emoji:
