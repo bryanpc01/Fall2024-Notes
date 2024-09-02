@@ -78,6 +78,7 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.highlight
   - pymdownx.inlinehilite
+  - pymdownx.snippets
   - attr_list
   - md_in_html
   - tables
