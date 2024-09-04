@@ -98,6 +98,11 @@ Ping sends ICMP packets.
 ```
 $ ping <ip>
 ```
+## View open ports
+```
+$ netstat -tna 
+```
+
 ## Packet Construction
 <figure markdown="span">
    ![Layers of OSI](https://upload.wikimedia.org/wikipedia/commons/0/0e/Layers_of_OSI_modles.png)
