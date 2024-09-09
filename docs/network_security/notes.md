@@ -122,3 +122,58 @@ $ netstat -tna
 - MAC-layer header is added.
 > Most Important Information: Source/Destination MAC Addresses. 
 
+## Packet Sniffing
+!!! info "Packet Sniffing"
+
+    Computer programs or hardware that can log traffic passing over a computer network. 
+
+### List of Packet Sniffing Tools
+- [Wireshark](https://www.wireshark.org/docs/wsug_html/){:target="_blank"}
+- [tcpdump](https://www.tcpdump.org/){:target="_blank"}
+- [scapy](https://scapy.net/){:target="_blank"}
+
+## tcpdump
+Command to sniff network traffic on a defined interface.
+```
+$ tcpdump -n -i enp5s0
+```
+Command to sniff TCP/443 traffic on a defined interface. 
+```
+$ tcpdump -n -i enp5p0 -vvv "tcp port 443"
+```
+Command to save captured packets to a pcap file. 
+```
+$ tcpdump -n -i enp5s0 -w "/tmp/packets.pcap"
+```
+
+## scapy
+We can sniff network traffic using python.
+``` py title="simple-sniffer.py"
+--8<-- "snippets/simple-sniffer.py"
+```
+
+??? info "List of useful Berkely Packet Filters"
+
+    | **Filter Type**               | **Description**                                      | **BPF Command**                                   |
+    |-------------------------------|------------------------------------------------------|---------------------------------------------------|
+    | **TCP Packets**                | Filter TCP packets                                   | `tcp`                                             |
+    | **UDP Packets**                | Filter UDP packets                                   | `udp`                                             |
+    | **ICMP Packets**               | Filter ICMP packets                                  | `icmp`                                            |
+    | **Source IP Address**          | Filter by source IP address                          | `src host 192.168.1.1`                            |
+    | **Destination IP Address**     | Filter by destination IP address                     | `dst host 192.168.1.1`                            |
+    | **Both IP Addresses**          | Filter by both source and destination IP addresses   | `host 192.168.1.1 and host 192.168.1.2`           |
+    | **Specific Port**              | Filter by specific port number                       | `port 80`                                         |
+    | **Source Port**                | Filter by source port number                         | `src port 80`                                     |
+    | **Destination Port**           | Filter by destination port number                    | `dst port 80`                                     |
+    | **TCP Port Range**             | Filter TCP packets within a range of ports           | `tcp portrange 1000-2000`                         |
+    | **Ethernet Type**              | Filter by Ethernet protocol type (e.g., IPv4)        | `ether proto 0x0800`                              |
+    | **Source MAC Address**         | Filter by source MAC address                         | `ether src 00:11:22:33:44:55`                     |
+    | **Destination MAC Address**    | Filter by destination MAC address                    | `ether dst 00:11:22:33:44:55`                     |
+    | **ARP Packets**                | Filter Address Resolution Protocol (ARP) packets     | `arp`                                             |
+    | **Broadcast Packets**          | Filter broadcast packets                             | `broadcast`                                       |
+    | **Multicast Packets**          | Filter multicast packets                             | `multicast`                                       |
+    | **Subnet**                     | Filter packets within a specific subnet              | `net 192.168.1.0/24`                              |
+    | **Packet Size**                | Filter packets larger than a specific size           | `greater 1500`                                    |
+    | **TCP SYN Packets**            | Filter TCP packets with SYN flag                     | `tcp[tcpflags] & tcp-syn != 0`                    |
+    | **Combination**                | Combine multiple filters with logical operators      | `tcp and src host 192.168.1.1 and port 80`        |
+
